@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JFCM Complete Question Bank</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f5f5f5;
+}
+
+/* Main container */
+.main{
+    max-width:900px;
+    margin:10px auto;
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Headings */
+h1{
+    font-size:22px;
+    text-align:center;
+}
+
+p{
+    text-align:center;
+    font-size:14px;
+}
+
+/* Score + question */
+#s{
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+#q{
+    font-size:18px;
+    margin:15px 0;
+}
+
+/* Buttons */
+button{
+    padding:14px;
+    margin:8px 0;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* Answer options */
+.opt{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:#f0f0f0;
+}
+
+.opt:active{
+    transform:scale(0.98);
+}
+
+/* Next button */
+#n{
+    width:100%;
+    background:#007bff;
+    color:white;
+}
+
+/* Feedback */
+#f{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+/* Mobile tweaks */
+@media (max-width:600px){
+    .main{
+        margin:5px;
+        padding:12px;
+        border-radius:10px;
+    }
+
+    h1{
+        font-size:20px;
+    }
+
+    #q{
+        font-size:16px;
+    }
+
+    button{
+        font-size:15px;
+        padding:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+<h1>JFCM Expanded Quiz Bank</h1>
+<p>MCQ & True/False Practice Quiz</p>
+
+<div id="p"></div>
+<div id="s"></div>
+<h3 id="q"></h3>
+<div id="o"></div>
+<div id="f"></div>
+
+<button id="n" onclick="nx()" style="display:none">Next</button>
+</div>
+
+<script>
+const quiz=[
+["Isang paglalarawan sa iglesya ay katulad sa isang babaing ikakasal.",["Tama","Mali"],"Tama"],
+["Malimit ding ilarawan ang iglesya bilang:",["Samahan ng mga banal","Samahan ng mga matatapat at mga saksi","Sambahayan ng Diyos","A at C lamang","A, B, at C lamang"],"A, B, at C lamang"],
+["Ang ibig sabihin ng ekklesia sa Bagong Tipan ay kalipunan ng lahat ng mananampalataya.",["Tama","Mali"],"Tama"]
+];
+
+let i=0,s=0;
+quiz.sort(()=>Math.random()-0.5);
+
+function load(){
+    document.getElementById("p").innerText=`Question ${i+1}/${quiz.length}`;
+    sco();
+    document.getElementById("q").innerText=quiz[i][0];
+
+    let o=document.getElementById("o");
+    o.innerHTML='';
+
+    quiz[i][1].forEach(v=>{
+        let b=document.createElement("button");
+        b.className="opt";
+        b.textContent=v;
+        b.onclick=()=>chk(v);
+        o.appendChild(b);
+    });
+
+    document.getElementById("f").innerHTML='';
+    document.getElementById("n").style.display="none";
+}
+
+function sco(){
+    document.getElementById("s").innerText="Score: "+s;
+}
+
+function chk(v){
+    document.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+
+    if(v===quiz[i][2]){
+        s++;
+        document.getElementById("f").innerHTML="✅ Correct";
+    }else{
+        document.getElementById("f").innerHTML="❌ Correct Answer: "+quiz[i][2];
+    }
+
+    sco();
+    document.getElementById("n").style.display="block";
+}
+
+function nx(){
+    i++;
+    if(i>=quiz.length){
+        document.body.innerHTML=
+        `<div class='main'>
+            <h1>Completed</h1>
+            <h2>${s}/${quiz.length}</h2>
+        </div>`;
+    }else{
+        load();
+    }
+}
+
+load();
+</script>
+
+</body>
+</html>
