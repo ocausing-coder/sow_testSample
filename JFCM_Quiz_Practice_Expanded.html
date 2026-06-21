@@ -1,0 +1,74 @@
+<!DOCTYPE html><html><head><meta charset='UTF-8'>
+<title>JFCM Complete Question Bank</title>
+<style>
+body{font-family:Arial;margin:20px;background:#f5f5f5}
+.main{max-width:1000px;margin:auto;background:white;padding:20px;border-radius:10px}
+button{padding:10px;margin:5px}
+.opt{display:block;width:100%;margin:6px 0;text-align:left}
+</style></head><body><div class='main'>
+<h1>JFCM Expanded Quiz Bank</h1>
+<p>Includes MCQ, True/False, and review items from the supplied question bank.</p>
+<div id='p'></div><div id='s'></div><h3 id='q'></h3><div id='o'></div><div id='f'></div>
+<button id='n' onclick='nx()' style='display:none'>Next</button>
+</div><script>
+const quiz=[
+["Isang paglalarawan sa iglesya ay katulad sa isang babaing ikakasal.",["Tama","Mali"],"Tama"],
+["Malimit ding ilarawan ang iglesya bilang:",["Samahan ng mga banal","Samahan ng mga matatapat at mga saksi","Sambahayan ng Diyos","A at C lamang","A, B, at C lamang"],"A, B, at C lamang"],
+["Ang ibig sabihin ng ekklesia sa Bagong Tipan ay kalipunan ng lahat ng mananampalataya.",["Tama","Mali"],"Tama"],
+["Itinuring ng unang Kristiyano ang kanilang sarili bilang karugtong ng bayan ng Diyos.",["Tama","Mali"],"Mali"],
+["Mga pamantayan ng mga apostol:",["Trinidad ng Diyos","Pagkatao at pagka-Diyos ni Cristo","Muling pagbabalik ni Cristo","Lahat ng pinagpipilian"],"Lahat ng pinagpipilian"],
+["Lahat ng tunay na iglesya ay bahagi ng iglesyang itinatag ng Panginoon.",["Tama","Mali"],"Tama"],
+["Ang pagsunod kay Cristo ay paglahok sa tuloy-tuloy na gawain.",["Tama","Mali"],"Tama"],
+["Pangunahin sa katangian ng iglesya ang pagmamahal at katapatan kay Cristo.",["Tama","Mali"],"Tama"],
+["Napakapayak ng balangkas ng unang iglesya.",["Tama","Mali"],"Mali"],
+["Ang karaniwang pakahulugan ng ekklesia ay tinawag papalabas.",["Tama","Mali"],"Tama"],
+["Nagtitiwala tayo na ang Bibliya ay mula sa Diyos.",["Tama","Mali"],"Tama"],
+["Kailangang aralin at unawain ang Bibliya.",["Tama","Mali"],"Tama"],
+["Ano ang ibig sabihin ng inspired?",["Katulad ng sa makata","Pamamayani ng Diyos sa proseso ng pagsusulat","Lahat ng nasa itaas"],"Pamamayani ng Diyos sa proseso ng pagsusulat"],
+["Ang Bibliya ay hindi isinulat sa atin ngunit para rin sa atin.",["Tama","Mali"],"Tama"],
+["Iisa lamang ang kaparaanan ng Diyos sa pagliligtas.",["Tama","Mali"],"Tama"],
+["Ang pagkilala sa Diyos ay nakadepende sa pagkaunawa sa Salita.",["Tama","Mali"],"Tama"],
+["Ano ang Bibliya sa mga sumulat nito?",["Kapangyarihan ng Diyos","Sariling talino lamang","Kapahayagan mula sa Diyos","Lahat ng nasa itaas","B at C lamang","A at C lamang"],"A at C lamang"],
+["Ang bawat nanampalataya ay mababago kung aaralin at susundin ang Bibliya.",["Tama","Mali"],"Tama"],
+["May saysay ang kaalaman sa Bibliya kahit walang pagbabalik-loob.",["Tama","Mali"],"Mali"],
+["Paano aaralin at ituturo ang Bibliya?",["Ihambing sa kabuuang turo","Magpagabay sa Espiritu","Lahat ng nasa itaas"],"Lahat ng nasa itaas"],
+["Ang Diyablo at mga espirituwal na hukbo ang ating mga kaaway.",["Tama","Mali"],"Tama"],
+["Ang mga demonyo ay naghahanap ng katawang matatahanan.",["Tama","Mali"],"Tama"],
+["Ang spiritual warfare ay madalas hindi naisasabuhay.",["Tama","Mali"],"Tama"],
+["Sino ang mga nilikhang diyos na namumuno sa mga bansang nahiwalay sa Diyos?",["Mga pinuno","Mga hukbong espirituwal","Mga pinuno at kapangyarihan","Lahat ng pinagpipilian"],"Lahat ng pinagpipilian"],
+["Ang paraan ng paggapi sa masasamang espiritu ay pagpapalayas at pananalangin.",["Tama","Mali"],"Tama"],
+["Ang digmaang espirituwal ay hindi laban sa dugo at laman.",["Tama","Mali"],"Tama"],
+["Ang mga kaaway ng Kristiyano ay nagapi na ni Jesus.",["Tama","Mali"],"Tama"],
+["Malalabanan ang mga kaaway sa banal na pamumuhay at pananalangin.",["Tama","Mali"],"Tama"],
+["Inaatasan ang mga Kristiyano na labanan ang mga kaaway.",["Tama","Mali"],"Tama"],
+["Walang malinaw na landas sa pakikidigmang espirituwal.",["Tama","Mali"],"Mali"],
+["Maibabalik lamang ang tao sa Diyos sa pamamagitan ng Manunubos.",["Tama","Mali"],"Tama"],
+["Sa ilang paghihimagsik nawalay ang tao?",["Dalawang","Tatlong"],"Tatlong"],
+["Hindi sinukuan ng Diyos ang tao.",["Tama","Mali"],"Tama"],
+["Great Commission ang bansag sa atas ni Jesus.",["Tama","Mali"],"Tama"],
+["Ano ang Great Commission?",["Pagpapanumbalik","Pagpapaganap ng pagliligtas","Pakikiisa sa gawain ng Diyos","Lahat ng nasa itaas"],"Lahat ng nasa itaas"],
+["Ipinangako ng Diyos ang anak ng babae na dudurog sa ulo ng ahas.",["Tama","Mali"],"Tama"],
+["Mga paghihimagsik na dahilan ng kalagayan ng sangkatauhan?",["Eden, Cain, Noe, Babel","Eden, Noe, Babel"],"Eden, Noe, Babel"],
+["Paano iniatas ni Jesus ang paghayo?",["Gawing alagad ang lahat ng bansa","Maging mga saksi","Lahat ng nasa itaas"],"Lahat ng nasa itaas"],
+["Sa pamamagitan ni Abraham ay pagpapalain ang lahat ng bansa.",["Tama","Mali"],"Tama"],
+["Ang Great Commission ay hindi dapat paggugulan ng buhay.",["Tama","Mali"],"Mali"],
+["Ang Rapture ay magaganap bago ang abomination of desolation.",["Tama","Mali"],"Mali"],
+["Ang Israel ang susi sa mga gagawin ng Diyos sa daigdig.",["Tama","Mali"],"Tama"],
+["Ang 70 linggo ni Daniel ay:",["Tig-pipitong taon","70 tig-pipitong taon","390 taon"],"70 tig-pipitong taon"],
+["Sa Hudyo, ang buwan ay 30 araw at taon ay 360 araw.",["Tama","Mali"],"Tama"],
+["Sa 70 linggo ni Daniel, ilan ang naganap na?",["69 linggo o 483 taon","1 linggo o 7 taon"],"69 linggo o 483 taon"],
+["Ang pagdating ng isa pang Prinsipe ang simula ng ika-70 linggo.",["Tama","Mali"],"Tama"],
+["Ano ang magdadala sa Poot ng Diyos?",["Nakasakay sa kabayong puti","Ikapitong Tatak"],"Ikapitong Tatak"],
+["Karagdagang araw sa pitong taon ayon kay Daniel?",["30 araw","45 araw","Lahat ng nasa itaas"],"Lahat ng nasa itaas"],
+["May mga tanda ng pagbabalik ng Panginoon.",["Tama","Mali"],"Tama"],
+["Ang Rapture ay matapos ang kalagitnaan at bago ang ikapitong tatak.",["Tama","Mali"],"Tama"],
+["Ang Ikalawang Tatak ay kabayong pula na ang pangalan ay Kamatayan.",["Tama","Mali"],"Mali"],
+["Ang Ikalimang Tatak ay matinding kapighatian.",["Tama","Mali"],"Tama"]
+];
+let i=0,s=0;quiz.sort(()=>Math.random()-0.5);
+function load(){p.innerText=`Question ${i+1}/${quiz.length}`;sco();q.innerText=quiz[i][0];o.innerHTML='';quiz[i][1].forEach(v=>{let b=document.createElement('button');b.className='opt';b.textContent=v;b.onclick=()=>chk(v);o.appendChild(b)});f.innerHTML='';n.style.display='none';}
+function sco(){document.getElementById('s').innerText='Score: '+s;}
+function chk(v){document.querySelectorAll('.opt').forEach(x=>x.disabled=true);if(v===quiz[i][2]){s++;f.innerHTML='✅ Correct';}else{f.innerHTML='❌ Correct Answer: '+quiz[i][2];}sco();n.style.display='inline-block';}
+function nx(){i++; if(i>=quiz.length){document.body.innerHTML='<div class=main><h1>Completed</h1><h2>'+s+'/'+quiz.length+'</h2></div>';} else load();}
+load();
+</script></body></html>
